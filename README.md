@@ -30,3 +30,9 @@ Arguments:
     Rate: 100-60000 (Number of milliseconds. Default: 10000ms)
     Brightness: 0-100 (Percentage. Default: 100%)
 ```
+
+You can also add a custom udev rule, which will set the config on every connect. Just create a file like `/etc/udev/rules.d/80-g203-mouse.rules` with the following contents. Don't forget your config at the end!
+
+```
+ACTION=="add", KERNEL=="mouse*", SUBSYSTEM=="input", ATTRS{product}=="G203 Prodigy Gaming Mouse", RUN+="/usr/local/bin/g203-led <config>"
+```
